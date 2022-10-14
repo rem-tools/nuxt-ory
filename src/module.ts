@@ -2,7 +2,6 @@ import { resolve } from 'path'
 import { fileURLToPath } from 'url'
 import { defineNuxtModule, addPlugin, addImportsDir, addServerHandler } from '@nuxt/kit'
 import { ConfigurationParameters } from '@ory/client'
-import defu from 'defu'
 
 export interface ConfigurationOptions {
   config: ConfigurationParameters,

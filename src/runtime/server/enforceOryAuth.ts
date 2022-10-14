@@ -1,4 +1,4 @@
-import { defineEventHandler, getHeader, sendRedirect, H3EventContext } from 'h3'
+import { defineEventHandler, getHeader } from 'h3'
 import { Configuration, V0alpha2Api } from '@ory/client'
 import defu from 'defu'
 import { useRuntimeConfig } from '#imports'
