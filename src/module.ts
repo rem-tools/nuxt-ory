@@ -67,9 +67,8 @@ export default defineNuxtModule<ConfigurationOptions>({
 
     if (options.server.enabled) {
       addServerHandler({
-        handler: resolve(runtimeDir, './server/enforceOryAuth.ts'),
-        middleware: true,
-        lazy: true
+        handler: resolve(runtimeDir, './server/enforceOryAuth'),
+        middleware: true
       })
     }
   }
