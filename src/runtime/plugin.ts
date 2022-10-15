@@ -25,17 +25,11 @@ export default defineNuxtPlugin((nuxtApp) => {
     })
   }
 
-  return {
-    provide: {
-      ory: {
-        client: new V0alpha2Api(
-          new Configuration(defu(nuxtOry?.config, {
-            baseOptions: {
-              withCredentials: true
-            }
-          }))
-        )
+  nuxtApp.provide('ory', new V0alpha2Api(
+    new Configuration(defu(nuxtOry?.config, {
+      baseOptions: {
+        withCredentials: true
       }
-    }
-  }
+    }))
+  ))
 })
