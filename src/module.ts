@@ -5,7 +5,6 @@ import defu from 'defu'
 
 export interface ConfigurationOptions {
   config: ConfigurationParameters,
-  append: boolean,
   server: {
     enabled: boolean,
     excludePaths: string[]
@@ -26,7 +25,6 @@ export default defineNuxtModule<ConfigurationOptions>({
     }
   },
   defaults: {
-    append: false,
     server: {
       enabled: true,
       excludePaths: []
@@ -49,9 +47,7 @@ export default defineNuxtModule<ConfigurationOptions>({
     // nuxt.options.build.transpile.push('@ory/client')
 
     // Add our plugin
-    addPlugin(resolve(runtimeDir, 'plugin'), {
-      append: options.append // To be provided first
-    })
+    addPlugin(resolve(runtimeDir, 'plugin'))
 
     // Add composables to be used
     addImportsDir(resolve(runtimeDir, './composables'))
