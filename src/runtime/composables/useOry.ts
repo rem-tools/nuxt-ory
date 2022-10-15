@@ -1,3 +1,4 @@
+import { V0alpha2Api } from '@ory/client'
 import { useNuxtApp } from '#imports'
 
-export default () => useNuxtApp()?.$ory
+export default () : V0alpha2Api => useNuxtApp()?.$ory.client
