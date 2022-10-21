@@ -1,5 +1,13 @@
 import { fileURLToPath } from 'url'
-import { defineNuxtModule, addPlugin, addImportsDir, addServerHandler, createResolver, useLogger } from '@nuxt/kit'
+import {
+  defineNuxtModule,
+  addPlugin,
+  addImportsDir,
+  addServerHandler,
+  createResolver,
+  useLogger,
+  addImportsSources
+} from '@nuxt/kit'
 import { ConfigurationParameters } from '@ory/client'
 import defu from 'defu'
 
@@ -51,11 +59,16 @@ export default defineNuxtModule<ConfigurationOptions>({
 
     nuxt.options.build.transpile.push(runtimeDir)
 
+    // nuxt.options.alias['@ory/client'] = '@ory/client/dist/index.js'
+    nuxt.options.vite.optimizeDeps.exclude.push('@ory/client')
+
     // Add our plugin
     addPlugin(resolve(runtimeDir, 'plugin'))
 
     // Add composables to be used
-    addImportsDir(resolve(runtimeDir, './composables'))
+    nuxt.hook('imports:dirs', (dirs) => {
+      dirs.push(resolve(runtimeDir, './composables'))
+    })
 
     nuxt.hook('nitro:config', (nitroConfig) => {
       nitroConfig.alias = nitroConfig.alias || {}
