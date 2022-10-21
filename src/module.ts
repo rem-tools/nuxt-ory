@@ -1,5 +1,5 @@
 import { fileURLToPath } from 'url'
-import { defineNuxtModule, addPlugin, addImportsDir, addServerHandler, createResolver } from '@nuxt/kit'
+import { defineNuxtModule, addPlugin, addImportsDir, addServerHandler, createResolver, useLogger } from '@nuxt/kit'
 import { ConfigurationParameters } from '@ory/client'
 import defu from 'defu'
 
@@ -33,18 +33,23 @@ export default defineNuxtModule<ConfigurationOptions>({
       redirectsTo: null,
       excludePaths: []
     },
-    config: {},
+    config: null,
     proxy: true
   },
   setup (options, nuxt) {
+    const logger = useLogger('[@rem.tools/nuxt-ory]')
+
     // Inject config to runtime
     nuxt.options.runtimeConfig.nuxtOry = options
+
+    if (!nuxt.options.runtimeConfig.nuxtOry.config) {
+      logger.error('Ory configuration is missing')
+    }
 
     const { resolve } = createResolver(import.meta.url)
     const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
 
     nuxt.options.build.transpile.push(runtimeDir)
-    // nuxt.options.build.transpile.push('@ory/client')
 
     // Add our plugin
     addPlugin(resolve(runtimeDir, 'plugin'))

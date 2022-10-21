@@ -19,6 +19,7 @@ export default defineEventHandler(async (event) => {
   const cookie = getHeader(event, 'cookie')
 
   event.context._nuxtOry = {}
+  event.context._nuxtOry.client = oryInstance
 
   try {
     const { data } = await oryInstance.toSession(undefined, cookie as string)
