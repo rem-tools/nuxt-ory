@@ -1,10 +1,10 @@
 import { Ref } from 'vue'
-import { OrySession, useOryError } from './useOryState'
-import { useOrySession, useNuxtApp, useRequestHeaders } from '#imports'
+import { OrySession } from './useOryState'
+import { useNuxtApp, useRequestHeaders, ref } from '#imports'
 
 export const useOryValidateSession = async () : Promise<{ session: Ref<OrySession>, error: Ref }> => {
-  const session = useOrySession()
-  const error = useOryError()
+  const session = ref<OrySession>(null)
+  const error = ref(null)
 
   if (session.value) { return { session, error } }
 
