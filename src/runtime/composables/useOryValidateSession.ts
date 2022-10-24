@@ -6,8 +6,6 @@ export const useOryValidateSession = async () : Promise<{ session: Ref<OrySessio
   const session = ref<OrySession>(null)
   const error = ref(null)
 
-  if (session.value) { return { session, error } }
-
   const { $ory } = useNuxtApp()
   const { cookie } = useRequestHeaders(['cookie'])
 

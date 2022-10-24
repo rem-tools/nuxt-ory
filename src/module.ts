@@ -2,11 +2,10 @@ import { fileURLToPath } from 'url'
 import {
   defineNuxtModule,
   addPlugin,
-  addImportsDir,
   addServerHandler,
   createResolver,
   useLogger,
-  addImportsSources
+  extendViteConfig
 } from '@nuxt/kit'
 import { ConfigurationParameters } from '@ory/client'
 import defu from 'defu'
@@ -26,7 +25,7 @@ export interface ConfigurationOptions {
 
 export default defineNuxtModule<ConfigurationOptions>({
   meta: {
-    name: 'nuxt-ory',
+    name: '@rem.tools/nuxt-ory',
     configKey: 'ory',
     compatibility: {
       nuxt: '^3.0.0-rc.11'
@@ -48,19 +47,16 @@ export default defineNuxtModule<ConfigurationOptions>({
     const logger = useLogger('[@rem.tools/nuxt-ory]')
 
     // Inject config to runtime
-    nuxt.options.runtimeConfig.nuxtOry = options
+    nuxt.options.runtimeConfig.nuxtOry = defu()options
 
     if (!nuxt.options.runtimeConfig.nuxtOry.config) {
-      logger.error('Ory configuration is missing')
+      logger.warn('Ory configuration is missing, using defaults instead')
     }
 
     const { resolve } = createResolver(import.meta.url)
     const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
 
     nuxt.options.build.transpile.push(runtimeDir)
-
-    // nuxt.options.alias['@ory/client'] = '@ory/client/dist/index.js'
-    nuxt.options.vite.optimizeDeps.exclude.push('@ory/client')
 
     // Add our plugin
     addPlugin(resolve(runtimeDir, 'plugin'))
@@ -77,6 +73,13 @@ export default defineNuxtModule<ConfigurationOptions>({
       nitroConfig.externals = defu(typeof nitroConfig.externals === 'object' ? nitroConfig.externals : {}, {
         inline: [resolve('./runtime')]
       })
+    })
+
+    // Optimize Ory Client
+    extendViteConfig((config) => {
+      config.optimizeDeps = config.optimizeDeps || {}
+      config.optimizeDeps.include = config.optimizeDeps.include || []
+      config.optimizeDeps.include.push('@ory/client')
     })
 
     if (options.server.enabled) {
