@@ -47,7 +47,7 @@ export default defineNuxtModule<ConfigurationOptions>({
     const logger = useLogger('[@rem.tools/nuxt-ory]')
 
     // Inject config to runtime
-    nuxt.options.runtimeConfig.nuxtOry = defu()options
+    nuxt.options.runtimeConfig.nuxtOry = defu(nuxt.options.runtimeConfig?.nuxtOry, options)
 
     if (!nuxt.options.runtimeConfig.nuxtOry.config) {
       logger.warn('Ory configuration is missing, using defaults instead')
