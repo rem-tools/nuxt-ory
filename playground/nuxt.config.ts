@@ -10,6 +10,9 @@ export default defineNuxtConfig({
     },
     router: {
       // redirectsTo: 'https://account.remtools.io'
+    },
+    config: {
+      basePath: 'https://magical-banach-6tsh6l62ls.projects.oryapis.com'
     }
   }
 })

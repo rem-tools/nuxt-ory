@@ -20,10 +20,10 @@
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
-    "proxy": "ory proxy --no-jwt --port 4000 http://localhost:3000/"
+    "proxy": "ory proxy --no-jwt --port 4000 http://localhost:3000/ --project magical-banach-6tsh6l62ls"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.0.0-rc.11",
+    "@nuxt/kit": "^3.0.0",
     "@ory/client": "^0.2.0-alpha.48",
     "camel-case": "^4.1.2",
     "constant-case": "^3.0.4",
@@ -31,11 +31,11 @@
   },
   "devDependencies": {
     "@nuxt/module-builder": "latest",
-    "@nuxt/schema": "^3.0.0-rc.11",
+    "@nuxt/schema": "^3.0.0",
     "@nuxtjs/eslint-config-typescript": "latest",
-    "@ory/cli": "^0.1.43",
+    "@ory/cli": "^0.1.48",
     "eslint": "latest",
-    "nuxt": "^3.0.0-rc.11",
-    "release-please": "^14.13.1"
+    "nuxt": "^3.0.0",
+    "release-please": "^15.0.0"
   }
 }

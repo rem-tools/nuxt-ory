@@ -28,7 +28,7 @@ export default defineNuxtModule<ConfigurationOptions>({
     name: '@rem.tools/nuxt-ory',
     configKey: 'ory',
     compatibility: {
-      nuxt: '^3.0.0-rc.11'
+      nuxt: '^3.0.0'
     }
   },
   defaults: {
