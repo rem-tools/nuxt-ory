@@ -9,18 +9,24 @@ import {
 } from '@nuxt/kit'
 import { ConfigurationParameters } from '@ory/client'
 import defu from 'defu'
+import { OrySession } from './runtime/composables/useOryState'
+
+export interface CustomParameters {
+  url: string,
+  transform?: () => OrySession
+}
 
 export interface ConfigurationOptions {
-  config: ConfigurationParameters,
+  config: ConfigurationParameters|null,
   server: {
     enabled: boolean,
     excludePaths: string[]
   },
   router: {
-    redirectsTo: string,
+    redirectsTo: string|null,
     excludePaths: string[]
-  }
-  proxy: boolean
+  },
+  custom: CustomParameters|null
 }
 
 export default defineNuxtModule<ConfigurationOptions>({
@@ -41,7 +47,7 @@ export default defineNuxtModule<ConfigurationOptions>({
       excludePaths: []
     },
     config: null,
-    proxy: true
+    custom: null
   },
   setup (options, nuxt) {
     const logger = useLogger('[@rem.tools/nuxt-ory]')

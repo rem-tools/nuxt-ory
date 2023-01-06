@@ -2,7 +2,10 @@ import { Ref } from 'vue'
 import { Session } from '@ory/client'
 import { useNuxtApp, useState } from '#imports'
 
-export type OrySession = Session|null
+export type OrySession =
+  | Session
+  | object
+  | null
 
 export const useOryError = () : Ref => {
   const { ssrContext } = useNuxtApp()

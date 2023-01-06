@@ -1,4 +1,5 @@
 import { Ref } from 'vue'
+import axios from 'axios'
 import { OrySession } from './useOryState'
 import { useNuxtApp, useRequestHeaders, ref } from '#imports'
 
@@ -8,12 +9,24 @@ export const useOryValidateSession = async () : Promise<{ session: Ref<OrySessio
 
   const { $ory } = useNuxtApp()
   const { cookie } = useRequestHeaders(['cookie'])
+  const { nuxtOry } = useRuntimeConfig()
 
   try {
-    const { data } = await $ory.client.toSession(...(process.server ? [undefined, cookie] : []))
+    if (nuxtOry?.custom) {
+      const { data } = await axios.get(nuxtOry?.custom?.url, {
+        headers: {
+          Cookie: cookie
+        }
+      })
 
-    session.value = data
+      session.value = nuxtOry?.custom?.transform ? nuxtOry?.custom?.transform(data) : data
+    } else {
+      const { data } = await $ory.client.toSession(...(process.server ? [undefined, cookie] : []))
+
+      session.value = data
+    }
   } catch (err) {
+    // @ts-ignore
     error.value = err
   }
 

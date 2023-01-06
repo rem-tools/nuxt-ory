@@ -1,6 +1,7 @@
 import { defineEventHandler, getHeader } from 'h3'
 import { Configuration, V0alpha2Api } from '@ory/client'
 import defu from 'defu'
+import axios from 'axios'
 import { useRuntimeConfig } from '#imports'
 
 const { nuxtOry } = useRuntimeConfig()
@@ -21,9 +22,19 @@ export default defineEventHandler(async (event) => {
   event.context._nuxtOry = {}
 
   try {
-    const { data } = await oryInstance.toSession(undefined, cookie as string)
+    if (nuxtOry?.custom) {
+      const { data } = await axios.get(nuxtOry?.custom?.url, {
+        headers: {
+          Cookie: cookie
+        }
+      })
 
-    event.context._nuxtOry.session = data
+      event.context._nuxtOry.session = nuxtOry?.custom?.transform ? nuxtOry?.custom?.transform(data) : data
+    } else {
+      const { data } = await oryInstance.toSession(undefined, cookie as string)
+
+      event.context._nuxtOry.session = data
+    }
   } catch (err) {
     event.context._nuxtOry.error = err
   }
