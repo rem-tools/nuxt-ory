@@ -1,6 +1,6 @@
-import { V0alpha2Api } from '@ory/client'
+import { FrontendApi } from '@ory/client'
 import { useNuxtApp } from '#imports'
 
-export const useOry = () : V0alpha2Api => {
+export const useOry = () : FrontendApi => {
   return useNuxtApp().$ory
 }
