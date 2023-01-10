@@ -1,9 +1,8 @@
-import { Configuration, V0alpha2Api } from '@ory/client'
+import { Configuration, FrontendApi } from '@ory/client'
 import defu from 'defu'
 import {
   addRouteMiddleware,
-  defineNuxtPlugin, navigateTo, useOry,
-  useOryError,
+  defineNuxtPlugin, navigateTo, useOryError,
   useRuntimeConfig
 } from '#imports'
 
@@ -25,7 +24,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     })
   }
 
-  nuxtApp.provide('ory', new V0alpha2Api(
+  nuxtApp.provide('ory', new FrontendApi(
     new Configuration(defu(nuxtOry?.config, {
       baseOptions: {
         withCredentials: true

@@ -964,17 +964,17 @@
   dependencies:
     "@octokit/openapi-types" "^14.0.0"
 
-"@ory/cli@^0.1.48":
-  version "0.1.48"
-  resolved "https://registry.yarnpkg.com/@ory/cli/-/cli-0.1.48.tgz#afc4aa9f702d2d4f64eb12ab977164c93844b83b"
-  integrity sha512-sS86a3JmvmEn5+zSQkTKorVOAAJFCv6Iej7NRJGtAGTkplxBSL2tvy5wWkIKMBDBZmmu2HFTxn/EAnLmbgUKRQ==
+"@ory/cli@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@ory/cli/-/cli-0.2.1.tgz#6fc4ac7d2e2db46e387b35cc73a3bae9f21cddc6"
+  integrity sha512-kW3qv/QKwcjehXw8Bbsrt7+EUxPHWd/sYCtuq6LMeElnOl28VSIWVZQz9c0OCIQ9PQUoX1pJepxHCfsTfnuIUg==
   dependencies:
     binwrap "^0.2.3"
 
-"@ory/client@^0.2.0-alpha.48":
-  version "0.2.0-alpha.48"
-  resolved "https://registry.yarnpkg.com/@ory/client/-/client-0.2.0-alpha.48.tgz#d1e3b1950d5790b8872a0386477df5804c41d1a2"
-  integrity sha512-iZ5N9XBD83PoZkmEamdWGG/9L3B+rw48uP1uLYsXV03M99GGIqqLKBvAJSk95sbCvWmsexxntrqmMb0CeAouwg==
+"@ory/client@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@ory/client/-/client-1.1.4.tgz#8ec9e7cab003bbeb230908a6b047c8c30b7fbf68"
+  integrity sha512-NEM9XwH3HivMQBFAn1YRx91AAFK5KRQgM2XVTLZcyWsOWKxNwlAPxZasBq5OODac8j1aRMfcb6/VyK3K5ikzFg==
   dependencies:
     axios "^0.21.4"
 

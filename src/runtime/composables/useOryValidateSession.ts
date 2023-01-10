@@ -21,7 +21,7 @@ export const useOryValidateSession = async () : Promise<{ session: Ref<OrySessio
 
       session.value = nuxtOry?.custom?.transform ? nuxtOry?.custom?.transform(data) : data
     } else {
-      const { data } = await $ory.client.toSession(...(process.server ? [undefined, cookie] : []))
+      const { data } = await $ory.toSession(...(process.server ? [{ cookie }] : []))
 
       session.value = data
     }
