@@ -2,7 +2,7 @@ import { Configuration, FrontendApi } from '@ory/client'
 import defu from 'defu'
 import {
   addRouteMiddleware,
-  defineNuxtPlugin, navigateTo, useOryError,
+  defineNuxtPlugin, navigateTo,
   useRuntimeConfig
 } from '#imports'
 
