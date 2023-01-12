@@ -3,7 +3,7 @@ import defu from 'defu'
 import {
   addRouteMiddleware,
   defineNuxtPlugin, navigateTo,
-  useRuntimeConfig
+  useRuntimeConfig, useOryError
 } from '#imports'
 
 export default defineNuxtPlugin((nuxtApp) => {
