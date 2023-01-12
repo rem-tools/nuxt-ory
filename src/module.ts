@@ -64,9 +64,6 @@ export default defineNuxtModule<ConfigurationOptions>({
 
     nuxt.options.build.transpile.push(runtimeDir)
 
-    // Add our plugin
-    addPlugin(resolve(runtimeDir, 'plugin'))
-
     // Add composables to be used
     nuxt.hook('imports:dirs', (dirs) => {
       dirs.push(resolve(runtimeDir, './composables'))
@@ -80,6 +77,9 @@ export default defineNuxtModule<ConfigurationOptions>({
         inline: [resolve('./runtime')]
       })
     })
+
+    // Add our plugin
+    addPlugin(resolve(runtimeDir, 'plugin'))
 
     // Optimize Ory Client
     extendViteConfig((config) => {
