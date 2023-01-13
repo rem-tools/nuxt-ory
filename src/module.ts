@@ -5,7 +5,8 @@ import {
   addServerHandler,
   createResolver,
   useLogger,
-  extendViteConfig
+  extendViteConfig,
+  addImportsDir
 } from '@nuxt/kit'
 import { ConfigurationParameters } from '@ory/client'
 import defu from 'defu'
@@ -64,10 +65,7 @@ export default defineNuxtModule<ConfigurationOptions>({
 
     nuxt.options.build.transpile.push(runtimeDir)
 
-    // Add composables to be used
-    nuxt.hook('imports:dirs', (dirs) => {
-      dirs.push(resolve(runtimeDir, './composables'))
-    })
+    addImportsDir(resolve(runtimeDir, './composables'))
 
     nuxt.hook('nitro:config', (nitroConfig) => {
       nitroConfig.alias = nitroConfig.alias || {}

@@ -1,5 +1,5 @@
 import { defineEventHandler, getHeader } from 'h3'
-  import { Configuration, FrontendApi } from '@ory/client'
+import { Configuration, FrontendApi } from '@ory/client'
 import defu from 'defu'
 import axios from 'axios'
 import { useRuntimeConfig } from '#imports'
