@@ -1,6 +1,7 @@
 <template>
   <div>
     {{ error }}
+    {{ session }}
   </div>
 </template>
 

@@ -1,9 +1,10 @@
 import { Configuration, FrontendApi } from '@ory/client'
 import defu from 'defu'
+import { useOryError } from './composables/useOryState'
 import {
   addRouteMiddleware,
   defineNuxtPlugin, navigateTo,
-  useRuntimeConfig, useOryError
+  useRuntimeConfig
 } from '#imports'
 
 export default defineNuxtPlugin((nuxtApp) => {
