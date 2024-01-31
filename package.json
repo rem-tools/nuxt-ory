@@ -35,7 +35,7 @@
     "@nuxtjs/eslint-config-typescript": "latest",
     "@ory/cli": "^0.2.1",
     "eslint": "latest",
-    "nuxt": "^3.0.0",
+    "nuxt": "^3.9.2",
     "release-please": "^15.0.0"
   }
 }

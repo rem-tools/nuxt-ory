@@ -16,6 +16,9 @@ export const useOryError = () : Ref => {
 export const useOrySession = () : Ref<OrySession> => {
   const { ssrContext } = useNuxtApp()
 
+  console.log('ssrContext?.event?.context?._nuxtOry?.session')
+  console.log(ssrContext?.event?.context?._nuxtOry?.session)
+
   return useState<OrySession>('nuxtOry', () => ssrContext?.event?.context?._nuxtOry?.session ?? null)
 }
 

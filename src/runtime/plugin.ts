@@ -1,5 +1,4 @@
 import { Configuration, FrontendApi } from '@ory/client'
-import defu from 'defu'
 import { useOryError } from './composables/useOryState'
 import {
   addRouteMiddleware,
@@ -9,27 +8,32 @@ import {
 
 export default defineNuxtPlugin((nuxtApp) => {
   const error = useOryError()
-  const { nuxtOry } = useRuntimeConfig()
+  const config = useRuntimeConfig()
 
-  if (nuxtOry?.router?.redirectsTo) {
+  if (config.nuxtOry?.router?.redirectsTo) {
     addRouteMiddleware('ory-redirect-if-error', (to) => {
-      if (to.fullPath.includes(nuxtOry?.router.redirectsTo) || nuxtOry?.router.excludePaths.some(p => to.path.includes(p))) { return true }
+      if (to.fullPath.includes(config.nuxtOry?.router.redirectsTo) || config.nuxtOry?.router.excludePaths.some(p => to.path.includes(p))) { return true }
 
       if (error.value) {
-        return navigateTo(nuxtOry?.router?.redirectsTo, {
-          external: /^https?:\/\//.test(nuxtOry?.router?.redirectsTo)
-        })
+        return navigateTo(config.nuxtOry?.router?.redirectsTo) // Not support for external urls. Use excludePaths instead (/auth/login)
       }
     }, {
       global: true
     })
   }
 
+  // config.nuxtOry?.config?.basePath -> Only for server side rendering. Use public.oryUrl instead for client side rendering
+  const basePath = config.nuxtOry?.config?.basePath ?? config.public.oryUrl
+
+  console.log('basePath')
+  console.log(basePath)
+
   nuxtApp.provide('ory', new FrontendApi(
-    new Configuration(defu(nuxtOry?.config, {
+    new Configuration({
+      basePath,
       baseOptions: {
         withCredentials: true
       }
-    }))
+    })
   ))
 })

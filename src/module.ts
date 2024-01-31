@@ -8,9 +8,9 @@ import {
   extendViteConfig,
   addImportsDir
 } from '@nuxt/kit'
-import { ConfigurationParameters } from '@ory/client'
-import defu from 'defu'
-import { OrySession } from './runtime/composables/useOryState'
+import type { ConfigurationParameters } from '@ory/client'
+import { defu } from 'defu'
+import type { OrySession } from './runtime/composables/useOryState'
 
 export interface CustomParameters {
   url: string,
@@ -50,7 +50,7 @@ export default defineNuxtModule<ConfigurationOptions>({
     config: null,
     custom: null
   },
-  setup (options, nuxt) {
+  setup (options: any, nuxt: any) {
     const logger = useLogger('[@rem.tools/nuxt-ory]')
 
     // Inject config to runtime
@@ -67,7 +67,7 @@ export default defineNuxtModule<ConfigurationOptions>({
 
     addImportsDir(resolve(runtimeDir, './composables'))
 
-    nuxt.hook('nitro:config', (nitroConfig) => {
+    nuxt.hook('nitro:config', (nitroConfig: any) => {
       nitroConfig.alias = nitroConfig.alias || {}
 
       // Inline module runtime in Nitro bundle
