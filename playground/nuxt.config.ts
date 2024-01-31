@@ -1,14 +1,9 @@
-import { defineNuxtConfig } from 'nuxt/config'
-import MyModule from '..'
-
 export default defineNuxtConfig({
-  modules: [
-    MyModule
-  ],
-  ory: {
+  modules: ['../src/module'],
+  nuxtOry: {
     custom: {
       url: 'https://public.test.rem.tools/identities/users/me',
-      transform: ({ result }) => ({
+      transform: ({ result }: any) => ({
         session: result.identity,
         extra: result.company
       })
@@ -19,5 +14,6 @@ export default defineNuxtConfig({
     config: {
       basePath: 'http://localhost:4000'
     }
-  }
+  },
+  devtools: { enabled: true }
 })

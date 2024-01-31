@@ -1,11 +1,13 @@
 {
-  "name": "@rem.tools/nuxt-ory",
-  "version": "0.10.15",
+  "name": "my-module",
+  "version": "1.0.0",
+  "description": "My new Nuxt module",
+  "repository": "your-org/my-module",
   "license": "MIT",
   "type": "module",
-  "repository": "https://github.com/rem-tools/nuxt-ory",
   "exports": {
     ".": {
+      "types": "./dist/types.d.ts",
       "import": "./dist/module.mjs",
       "require": "./dist/module.cjs"
     }
@@ -16,26 +18,42 @@
     "dist"
   ],
   "scripts": {
-    "prepack": "nuxt-module-build",
+    "prepack": "nuxt-module-build build",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
-    "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
-    "proxy": "ory proxy --no-jwt --port 4000 http://localhost:3000/ --project magical-banach-6tsh6l62ls"
+    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
+    "release": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "clean": "rm -rf dist .nuxt playground/.nuxt",
+    "prepublish": "yarn clean && yarn dev:prepare && yarn prepack"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.0.0",
-    "@ory/client": "^1.1.4",
-    "camel-case": "^4.1.2",
-    "constant-case": "^3.0.4",
-    "defu": "^6.1.0"
+    "@nuxt/kit": "^3.10.0",
+    "@ory/client": "^1.5.2",
+    "camel-case": "^5.0.0",
+    "constant-case": "^4.0.0",
+    "defu": "^6.1.4"
   },
   "devDependencies": {
-    "@nuxt/module-builder": "latest",
-    "@nuxt/schema": "^3.0.0",
-    "@nuxtjs/eslint-config-typescript": "latest",
-    "@ory/cli": "^0.2.1",
-    "eslint": "latest",
-    "nuxt": "^3.9.2",
-    "release-please": "^15.0.0"
+    "@nuxt/devtools": "latest",
+    "@nuxt/eslint-config": "^0.2.0",
+    "@nuxt/module-builder": "^0.5.5",
+    "@nuxt/schema": "^3.10.0",
+    "@nuxt/test-utils": "^3.11.0",
+    "@ory/cli": "^0.3.2",
+    "@types/node": "^20.11.13",
+    "@vue/test-utils": "^2.4.4",
+    "changelogen": "^0.5.5",
+    "eslint": "^8.56.0",
+    "happy-dom": "^13.3.8",
+    "nuxt": "^3.10.0",
+    "playwright-core": "^1.41.1",
+    "string-width": "^1.0.2 || 2 || 3 || 4",
+    "vitest": "^1.2.2"
+  },
+  "resolutions": {
+    "string-width": "4.2.3"
   }
 }

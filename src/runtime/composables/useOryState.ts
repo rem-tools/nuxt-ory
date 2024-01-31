@@ -1,5 +1,5 @@
-import { Ref } from 'vue'
-import { Session } from '@ory/client'
+import type { Ref } from 'vue'
+import type { Session } from '@ory/client'
 import { useNuxtApp, useState } from '#imports'
 
 export type OrySession =
@@ -15,9 +15,6 @@ export const useOryError = () : Ref => {
 
 export const useOrySession = () : Ref<OrySession> => {
   const { ssrContext } = useNuxtApp()
-
-  console.log('ssrContext?.event?.context?._nuxtOry?.session')
-  console.log(ssrContext?.event?.context?._nuxtOry?.session)
 
   return useState<OrySession>('nuxtOry', () => ssrContext?.event?.context?._nuxtOry?.session ?? null)
 }
