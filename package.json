@@ -1,8 +1,6 @@
 {
-  "name": "my-module",
-  "version": "1.0.0",
-  "description": "My new Nuxt module",
-  "repository": "your-org/my-module",
+  "name": "@rem-tools/nuxt-ory",
+  "version": "1.1.2",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -11,6 +9,10 @@
       "import": "./dist/module.mjs",
       "require": "./dist/module.cjs"
     }
+  },
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com"
   },
   "main": "./dist/module.cjs",
   "types": "./dist/types.d.ts",
@@ -21,13 +23,12 @@
     "prepack": "nuxt-module-build build",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
-    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
-    "release": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
+    "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest watch",
     "clean": "rm -rf dist .nuxt playground/.nuxt",
-    "prepublish": "yarn clean && yarn dev:prepare && yarn prepack"
+    "prepublish": "yarn run clean && yarn run dev:prepare && yarn run prepack"
   },
   "dependencies": {
     "@nuxt/kit": "^3.10.0",

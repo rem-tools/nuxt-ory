@@ -1,0 +1,18 @@
+assign_issues:
+  - gardun0
+#assign_issues_by:
+#  - labels:
+#      - 'api: one'
+#      - 'api: two'
+#    to:
+#      - label_assignee_1
+#      - label_assignee_2
+#  - labels:
+#      - 'api: three'
+#    to:
+#      - label_assignee_3
+assign_prs:
+  - gardun0
+ignore_authors:
+  - dependabot
+  - renovate
