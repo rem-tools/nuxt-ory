@@ -1,5 +1,5 @@
-import { Ref } from 'vue'
-import { Session } from '@ory/client'
+import type { Ref } from 'vue'
+import type { Session } from '@ory/client'
 import { useNuxtApp, useState } from '#imports'
 
 export type OrySession =
