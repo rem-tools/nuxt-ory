@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/rem-tools/nuxt-ory/compare/nuxt-ory-v1.1.2...nuxt-ory-v1.2.0) (2024-02-07)
+
+
+### Features
+
+* update module  ([#1](https://github.com/rem-tools/nuxt-ory/issues/1)) ([96789f5](https://github.com/rem-tools/nuxt-ory/commit/96789f5b084bfa25af83cf2fea93d45d027c06e6))
+
 ## [1.1.2](https://github.com/rem-tools/nuxt-ory/compare/nuxt-ory-v1.1.1...nuxt-ory-v1.1.2) (2024-02-07)
 
 
