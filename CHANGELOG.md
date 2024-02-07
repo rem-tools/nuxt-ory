@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/rem-tools/nuxt-ory/compare/nuxt-ory-v1.1.0...nuxt-ory-v1.1.1) (2024-02-07)
+
+
+### Bug Fixes
+
+* correct package deploy ([4023429](https://github.com/rem-tools/nuxt-ory/commit/402342954bacbe85bae1865bb540de23580d71c7))
+
 ## [1.1.0](https://github.com/rem-tools/nuxt-ory/compare/nuxt-ory-v1.0.0...nuxt-ory-v1.1.0) (2024-02-07)
 
 
