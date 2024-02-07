@@ -1,6 +1,6 @@
 {
-  "name": "@rem.tools/nuxt-ory",
-  "version": "0.10.15",
+  "name": "@rem-tools/nuxt-ory",
+  "version": "1.1.2",
   "license": "MIT",
   "type": "module",
   "repository": "https://github.com/rem-tools/nuxt-ory",
@@ -9,6 +9,10 @@
       "import": "./dist/module.mjs",
       "require": "./dist/module.cjs"
     }
+  },
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com"
   },
   "main": "./dist/module.cjs",
   "types": "./dist/types.d.ts",
@@ -20,7 +24,9 @@
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
-    "proxy": "ory proxy --no-jwt --port 4000 http://localhost:3000/ --project magical-banach-6tsh6l62ls"
+    "proxy": "ory proxy --no-jwt --port 4000 http://localhost:3000/ --project magical-banach-6tsh6l62ls",
+    "clean": "rm -rf dist .nuxt playground/.nuxt",
+    "prepublish": "yarn run clean && yarn run dev:prepare && yarn run prepack"
   },
   "dependencies": {
     "@nuxt/kit": "^3.0.0",
