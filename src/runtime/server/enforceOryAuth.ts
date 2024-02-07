@@ -1,36 +1,37 @@
 import { defineEventHandler, getHeader } from 'h3'
 import { Configuration, FrontendApi } from '@ory/client'
-import defu from 'defu'
 import axios from 'axios'
 import { useRuntimeConfig } from '#imports'
 
-const { nuxtOry } = useRuntimeConfig()
+const config = useRuntimeConfig()
+const basePath = config.nuxtOry?.config?.basePath ?? config.public.oryUrl
 
 const oryInstance = new FrontendApi(
-  new Configuration(defu(nuxtOry?.config, {
+  new Configuration({
+    basePath,
     baseOptions: {
       withCredentials: true
     }
-  }))
+  })
 )
 
 export default defineEventHandler(async (event) => {
   // @ts-ignore
-  if (event.req.url.includes(nuxtOry?.router.redirectsTo) || nuxtOry?.server.excludePaths.some(p => event.req.url.includes(p))) { return }
+  if (event.req.url.includes(config.nuxtOry?.router.redirectsTo) || config.nuxtOry?.server.excludePaths.some(p => event.req.url.includes(p))) { return }
 
   const cookie = getHeader(event, 'cookie')
 
   event.context._nuxtOry = {}
 
   try {
-    if (nuxtOry?.custom) {
-      const { data } = await axios.get(nuxtOry?.custom?.url, {
+    if (config.nuxtOry?.custom) {
+      const { data } = await axios.get(config.nuxtOry?.custom?.url, {
         headers: {
           Cookie: cookie
         }
       })
 
-      event.context._nuxtOry.session = nuxtOry?.custom?.transform ? nuxtOry?.custom?.transform(data) : data
+      event.context._nuxtOry.session = config.nuxtOry?.custom?.transform ? config.nuxtOry?.custom?.transform(data) : data
     } else {
       const { data } = await oryInstance.toSession({
         cookie
