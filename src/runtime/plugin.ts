@@ -15,9 +15,7 @@ export default defineNuxtPlugin((nuxtApp) => {
       if (to.fullPath.includes(config.nuxtOry?.router.redirectsTo) || config.nuxtOry?.router.excludePaths.some(p => to.path.includes(p))) { return true }
 
       if (error.value) {
-        return navigateTo(config.nuxtOry?.router?.redirectsTo, {
-          external: /^https?:\/\//.test(config.nuxtOry?.router?.redirectsTo)
-        })
+        return navigateTo(config.nuxtOry?.router?.redirectsTo)
       }
     }, {
       global: true
