@@ -15,18 +15,16 @@ export default defineNuxtPlugin((nuxtApp) => {
       if (to.fullPath.includes(config.nuxtOry?.router.redirectsTo) || config.nuxtOry?.router.excludePaths.some(p => to.path.includes(p))) { return true }
 
       if (error.value) {
-        return navigateTo(config.nuxtOry?.router?.redirectsTo) // Not support for external urls. Use excludePaths instead (/auth/login)
+        return navigateTo(config.nuxtOry?.router?.redirectsTo, {
+          external: /^https?:\/\//.test(config.nuxtOry?.router?.redirectsTo)
+        })
       }
     }, {
       global: true
     })
   }
 
-  // config.nuxtOry?.config?.basePath -> Only for server side rendering. Use public.oryUrl instead for client side rendering
   const basePath = config.nuxtOry?.config?.basePath ?? config.public.oryUrl
-
-  console.log('basePath')
-  console.log(basePath)
 
   nuxtApp.provide('ory', new FrontendApi(
     new Configuration({
