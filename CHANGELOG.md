@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.2](https://github.com/rem-tools/nuxt-ory/compare/nuxt-ory-v1.2.1...nuxt-ory-v1.2.2) (2024-02-27)
+
+
+### Bug Fixes
+
+* Type of interfaces added ([#8](https://github.com/rem-tools/nuxt-ory/issues/8)) ([e56cd05](https://github.com/rem-tools/nuxt-ory/commit/e56cd05f1b497d2b8715a61a6c380005b6e67d5f))
+
 ## [1.2.1](https://github.com/rem-tools/nuxt-ory/compare/nuxt-ory-v1.2.0...nuxt-ory-v1.2.1) (2024-02-27)
 
 
