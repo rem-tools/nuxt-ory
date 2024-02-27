@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.4](https://github.com/rem-tools/nuxt-ory/compare/nuxt-ory-v1.2.3...nuxt-ory-v1.2.4) (2024-02-27)
+
+
+### Bug Fixes
+
+* update actions version ([0b16540](https://github.com/rem-tools/nuxt-ory/commit/0b165409876de32e686ef44d4344f3793618e6f0))
+
 ## [1.2.3](https://github.com/rem-tools/nuxt-ory/compare/nuxt-ory-v1.2.2...nuxt-ory-v1.2.3) (2024-02-27)
 
 
