@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.6](https://github.com/rem-tools/nuxt-ory/compare/nuxt-ory-v1.2.5...nuxt-ory-v1.2.6) (2024-02-27)
+
+
+### Bug Fixes
+
+* Added string-width in package.json ([#19](https://github.com/rem-tools/nuxt-ory/issues/19)) ([d543f3b](https://github.com/rem-tools/nuxt-ory/commit/d543f3bcb2c4b51548cd5125f38714966acdff86))
+
 ## [1.2.5](https://github.com/rem-tools/nuxt-ory/compare/nuxt-ory-v1.2.4...nuxt-ory-v1.2.5) (2024-02-27)
 
 
