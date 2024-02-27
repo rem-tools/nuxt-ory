@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/rem-tools/nuxt-ory/compare/nuxt-ory-v1.2.0...nuxt-ory-v1.2.1) (2024-02-27)
+
+
+### Bug Fixes
+
+* nodejs 20 verison to action ([e4d0a69](https://github.com/rem-tools/nuxt-ory/commit/e4d0a69b7485a501ef013c777f3afc4fa3ed41d9))
+
 ## [1.2.0](https://github.com/rem-tools/nuxt-ory/compare/nuxt-ory-v1.1.2...nuxt-ory-v1.2.0) (2024-02-07)
 
 
