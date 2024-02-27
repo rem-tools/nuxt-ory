@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.3](https://github.com/rem-tools/nuxt-ory/compare/nuxt-ory-v1.2.2...nuxt-ory-v1.2.3) (2024-02-27)
+
+
+### Bug Fixes
+
+* Removed the javascript version added in tsconfig.ts ([#12](https://github.com/rem-tools/nuxt-ory/issues/12)) ([6486c2d](https://github.com/rem-tools/nuxt-ory/commit/6486c2d0f281435d8053f4c818ddb83acb1148ed))
+
 ## [1.2.2](https://github.com/rem-tools/nuxt-ory/compare/nuxt-ory-v1.2.1...nuxt-ory-v1.2.2) (2024-02-27)
 
 
