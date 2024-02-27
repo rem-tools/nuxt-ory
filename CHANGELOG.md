@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.5](https://github.com/rem-tools/nuxt-ory/compare/nuxt-ory-v1.2.4...nuxt-ory-v1.2.5) (2024-02-27)
+
+
+### Bug Fixes
+
+* Incompatible dependencies moved ([#16](https://github.com/rem-tools/nuxt-ory/issues/16)) ([f8e44b2](https://github.com/rem-tools/nuxt-ory/commit/f8e44b267048280e99867bd4984cbf1f5a938190))
+
 ## [1.2.4](https://github.com/rem-tools/nuxt-ory/compare/nuxt-ory-v1.2.3...nuxt-ory-v1.2.4) (2024-02-27)
 
 
