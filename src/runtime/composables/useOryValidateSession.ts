@@ -1,7 +1,7 @@
 import type { Ref } from 'vue'
 import axios from 'axios'
 import type { OrySession } from './useOryState'
-import { useNuxtApp, useRequestHeaders, ref } from '#imports'
+import { useNuxtApp, useRequestHeaders, ref, useRuntimeConfig } from '#imports'
 
 export const useOryValidateSession = async () : Promise<{ session: Ref<OrySession>, error: Ref }> => {
   const session = ref<OrySession>(null)
