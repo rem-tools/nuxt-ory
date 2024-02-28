@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.7](https://github.com/rem-tools/nuxt-ory/compare/nuxt-ory-v1.2.6...nuxt-ory-v1.2.7) (2024-02-28)
+
+
+### Bug Fixes
+
+* useRuntimeConfig import was performed ([#22](https://github.com/rem-tools/nuxt-ory/issues/22)) ([0e94e32](https://github.com/rem-tools/nuxt-ory/commit/0e94e323fee44721c00f6b33647da09c40cfaa2a))
+
 ## [1.2.6](https://github.com/rem-tools/nuxt-ory/compare/nuxt-ory-v1.2.5...nuxt-ory-v1.2.6) (2024-02-27)
 
 
